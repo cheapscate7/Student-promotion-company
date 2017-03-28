@@ -1,0 +1,27 @@
+{
+  "companies": {
+    "company": [
+      {
+        "name": "Bowser's Castle",
+        "number": "07777777777",
+        "email": "suckstobeyou@email.com",
+        "website": "www.theelitist.edu",
+        "description": "Lorem ipsum dolor sit amet, nibh adipisci voluptatibus ut quo, legere honestatis vis id. Eu qui eloquentiam dissentiunt, eu est prima tincidunt efficiendi, eum in clita dicam utinam. Mel causae consequuntur cu, phaedrum nominati id mel. Eu cetero omittantur sit, elit malis elitr cu mei."
+      },
+      {
+        "name": "My Home",
+        "number": "01111111111",
+        "email": "you@email.com",
+        "website": "www.notawebsite.com",
+        "description": "Lorem ipsum dolor sit amet, nibh adipisci voluptatibus ut quo, legere honestatis vis id. Eu qui eloquentiam dissentiunt, eu est prima tincidunt efficiendi, eum in clita dicam utinam. Mel causae consequuntur cu, phaedrum nominati id mel. Eu cetero omittantur sit, elit malis elitr cu mei."
+      },
+      {
+        "name": "Company C",
+        "number": "0222222222",
+        "email": "you@email.com",
+        "website": "www.notawebsite.com",
+        "description": "Lorem ipsum dolor sit amet, nibh adipisci voluptatibus ut quo, legere honestatis vis id. Eu qui eloquentiam dissentiunt, eu est prima tincidunt efficiendi, eum in clita dicam utinam. Mel causae consequuntur cu, phaedrum nominati id mel. Eu cetero omittantur sit, elit malis elitr cu mei."
+      }
+    ]
+  }
+}

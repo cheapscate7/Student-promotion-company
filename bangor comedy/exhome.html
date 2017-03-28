@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<title>Student Promotion Company - HULL - Promoting companies in and around Hull, UK to students</title>
+<link rel="icon" 
+      type="image/png" 
+      href="img/logo.png" />
+
+	<head>
+		<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+		<script>
+		  // Initialize Firebase
+		  var config = {
+		    apiKey: "AIzaSyCDAFAP6jRYymU6p0sYgODVZqXqGOS-xVc",
+		    authDomain: "student-promotion-company.firebaseapp.com",
+		    databaseURL: "https://student-promotion-company.firebaseio.com",
+		    storageBucket: "student-promotion-company.appspot.com",
+		    messagingSenderId: "228719058168"
+		  };
+		  firebase.initializeApp(config);	
+		</script>
+		<script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/exhomecss.css" />
+        <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+        
+        <meta name="description" content="To promote companies in and around Hull to students">
+        <meta name="keywords" content="Hull, student, promotion">
+        <meta name="author" content="Matthew David Badcock">
+        <title>Student Promotion Company Hull</title>
+	</head>
+	<body>
+                      
+            <div class = "header" align="center">
+                <a href="#content"><img src="img/logo.png" class="logo"></a>
+            </div>
+            
+            <!--body container-->
+            <div class="content" id="content">
+                <div class="search" align="center">
+                    <input type="text" name="search" placeholder="Search..">
+                    <input type="submit" class="search-submit" value="" />
+                </div>
+                
+                <!--carousel container-->
+                <div class = "carousel" >
+                    <div class="carousel-item aboutus">
+                        <div class="description">
+                            <h1>About Us</h1>
+                        </div>
+                        <img src="img/logo2.png" width="100%" height="auto">
+                        <div class="description">
+                            <p><em>Want to connect with more than 16,000 students on your doorstep?</em><br><br>Six degrees of separation - every student knows every other student. There are over 16,000 students at the University of Hull, and almost all of them live within 15 minutes of your door. The Student Promotion Company has fantastic links with every major society and sports team on campus, as well as the exposure to reach thousands more. We don&rsquo;t know of any other company that can offer what we offer, at any price bracket.</p>
+                        </div>
+                    </div>  
+                    
+                    <div class="carousel-item aboutus">
+                        <div class="description">
+                            <h1>Our Partners</h1>
+                            <p><em>click any item to navigate to it</em></p>
+                            <ol id="desclist">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--Footer-->
+            <div class="footer">
+                <ul>
+                            <li><img src="img/FB.png"></li>
+                            <li>yourname@email.com</li>
+                            <li>07494 024605</li>
+                </ul>
+            </div>
+                
+            </div>
+            
+    
+    <!--scripts for carousel <slick>-->
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+    
+    <script type='text/javascript'>
+       $('.carousel').slick({
+
+          dots: true, 
+          infinite: true,
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          adaptiveHeight: false,
+          centerMode: true,
+          prevArrow: "<button type=\"button\" class=\"next-previous-button slick-prev\">Prev</button>",
+          nextArrow: "<button type=\"button\" class=\"next-previous-button slick-next\">Next</button>",
+          initialSlide: 1
+      });
+
+      var messagesRef = new Firebase('https://blistering-torch-2233.firebaseio.com/companies/company/');
+
+      //add each db entry to the carousel
+      messagesRef.on("child_added", function(snapshot){
+        var slide =   "<div class=\"carousel-item\">"+
+                    "<div class=\"description\">"+
+                    "<h1>"+snapshot.val().name+"</h1>"+
+                    "<h2><em>"+snapshot.val().email +"</em> - "+ snapshot.val().number +"</h2>"+
+                    "<p>"+snapshot.val().description+"</p>"+
+                    "<h3>"+snapshot.val().website+"</h3>"+
+                    "</div>"+
+                    "</div>";
+        $('.carousel').slick('slickAdd',slide);
+        
+        //append entry to the about us list
+        var div = document.getElementById('desclist');
+        var listitem = "<li>" + snapshot.val().name + "</li>";
+        div.innerHTML = div.innerHTML + listitem;
+        //set the height of each slide to be the tallest slide
+        var height = Math.max($(".carousel-item").height());
+        $(".carousel-item").height(height);
+      });
+      
+      $('#desclist').on('click', function(event) {
+          var target = event.target,
+          index = $(target).index() + 3;
+          console.log(target, index);
+          $('.carousel').slick('slickGoTo', index);
+      });
+      
+      //search
+      $('.search-submit').on('click', function(){
+          $('.carousel').slick('slickFilter', function(index){
+            var div = document.getElementById('desclist');
+            
+            return index;
+          });
+    });
+      </script>
+      
+	</body>
+</html>
